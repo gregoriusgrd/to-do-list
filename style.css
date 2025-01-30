@@ -1,0 +1,235 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --primary-color: #788CDE;
+    --secondary-color: #788CDE;
+    --background-gradient: #212121;
+    --card-bg: #1C1C1C;
+    --text-color: #EAEAEA;
+    --button-bg: #788CDE;
+    --button-hover: #4d6adf;
+    --input-bg: #2A2A2A;
+    --input-border: #34495E;
+    --input-hover: #363636;
+    --checked-color: #7F8C8D;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    min-height: 100vh;
+    background: var(--background-gradient);
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.todo-app {
+    width: 100%;
+    max-width: 500px;
+    background: var(--card-bg);
+    padding: 40px 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+
+    animation: showUp 0.7s forwards;
+    animation-delay: 0.3s;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+#title {
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    margin-bottom: 20px;
+
+    animation: showUp 0.7s forwards;
+    animation-delay: 0.3s;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.todo-app h2 img {
+    width: 30px;
+    margin-left: 10px;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--input-bg);
+    padding: 10px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    /* border: 1px solid var(--input-border); */
+
+    animation: showUp 0.7s forwards;
+    animation-delay: 0.5s;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.row:hover {
+    background-color: var(--input-hover);
+}
+
+input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 10px;
+    font-size: 16px;
+    color: var(--text-color);
+}
+
+button {
+    border: none;
+    outline: none;
+    padding: 12px 30px;
+    background: var(--button-bg);
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 12px;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: var(--button-hover);
+}
+
+ul li {
+    list-style: none;
+    font-size: 18px;
+    padding: 16px 12px 16px 50px;
+    user-select: none;
+    cursor: pointer;
+    position: relative;
+    /* border-bottom: 1px solid var(--input-border); */
+    transition: 0.3s;
+    color: var(--text-color);
+    background: var(--input-bg);
+    border-radius: 12px;
+
+    animation: showUp 0.7s forwards;
+    animation-delay: 0.5s;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+ul li:not(:first-child) {
+    margin-top: 8px;
+}
+
+ul li:last-child {
+    border-bottom: none;
+}
+
+ul li:hover {
+    background-color: var(--input-hover);
+}
+
+ul li::before {
+    content: '';
+    position: absolute;
+    height: 24px;
+    width: 24px;
+
+    background-image: url(assets/unchecked.png);
+    background-size: cover;
+    background-position: center;
+    top: 50%;
+    left: 8px;
+    transform: translateY(-50%);
+}
+
+ul li.checked {
+    color: var(--checked-color);
+    text-decoration: line-through;
+}
+
+ul li.checked::before {
+    background-image: url(assets/checked.png);
+}
+
+ul li span {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 35px;
+    height: 35px;
+    font-size: 20px;
+    color: var(--text-color);
+    line-height: 35px;
+    text-align: center;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+ul li span:hover {
+    background: var(--secondary-color);
+    color: #fff;
+}
+
+/* ANIMATION */
+
+@keyframes showUp {
+    to {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+/* MEDIA QUERY */
+
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    .todo-app {
+        width: 100%;
+        padding: 30px 20px;
+    }
+
+    #title {
+        font-size: 24px;
+    }
+
+    .row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .row input {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px 0;
+    }
+
+    ul li {
+        font-size: 16px;
+        padding: 12px 8px 12px 40px;
+    }
+
+    ul li span {
+        font-size: 18px;
+    }
+}
